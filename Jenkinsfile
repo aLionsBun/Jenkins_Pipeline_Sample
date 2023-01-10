@@ -11,7 +11,7 @@ pipeline {
         // Building sample project
         stage ('Build') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'maven_3_6_3') {
                     sh 'mvn -B -DskipTests clean package'
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
         // Running project tests
         stage ('Test') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'maven_3_6_3') {
                     sh 'mvn test'
                 }
             }
