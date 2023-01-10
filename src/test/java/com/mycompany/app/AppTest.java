@@ -35,7 +35,7 @@ public class AppTest {
     @DisplayName("Play FizzBuzz with number = 0")
     @Test
     public void testZero() {
-        String fizzBuzz = fB.play(5);
+        String fizzBuzz = fB.play(0);
         Assertions.assertEquals(fizzBuzz, "Fizz Buzz!");
     }
 
