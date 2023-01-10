@@ -1,7 +1,7 @@
 package com.mycompany.app;
 
 public class App {
-    private static final int[] numbers = [1, 3, 5, 0];
+    private static final int[] numbers = {1, 3, 5, 0};
 
     public App() {}
 
