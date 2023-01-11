@@ -12,6 +12,7 @@ pipeline {
         stage ('Build') {
             steps {
                 withMaven {
+                    echo "Building project"
                     sh 'mvn -B -DskipTests clean package'
                 }
             }
@@ -21,6 +22,7 @@ pipeline {
         stage ('Test') {
             steps {
                 withMaven {
+                    echo "Running tests"
                     sh 'mvn test'
                 }
             }
@@ -29,7 +31,10 @@ pipeline {
         // Deploying sample project
         stage ('Deploy') {
             steps {
-                echo "Building and testing successful! Project is ready to be deployed!"
+                withAWS(region:'us-east-1',credentials:'aws_credentials') {
+                    sh 'echo "Deploying to S3"'
+                    s3Upload(bucket: 'bilous-jenkins-build-artifacts', file: 'github-demo/target/**/*.jar')
+                }
             }
         }
     }
