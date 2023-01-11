@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withAWS(region:'us-east-1',credentials:'aws_credentials') {
                     sh 'echo "Deploying to S3"'
-                    s3Upload(bucket: 'bilous-jenkins-build-artifacts', includePathPattern:'target/*.jar')
+                    s3Upload(bucket: 'bilous-jenkins-build-artifacts', includePathPattern:'*.jar', workingDir: 'target')
                 }
             }
         }
